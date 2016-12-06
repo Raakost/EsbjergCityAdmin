@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.not_completed_orders_table {
+    background-color: #ff7575;
+    margin-bottom: 120px;
+}
+
+.completed_orders_table {
+    background-color: #50b950;
+}
+
+.table_head {
+    background-color: grey;
+}
