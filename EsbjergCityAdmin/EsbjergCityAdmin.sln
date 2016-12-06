@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsbjergCityAdmin", "EsbjergCityAdmin\EsbjergCityAdmin.csproj", "{04DC0B06-AC79-4D45-B2A3-220723E4C9EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{C1F2292D-0491-4B72-8DEC-5A7D04A8BEAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{04DC0B06-AC79-4D45-B2A3-220723E4C9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04DC0B06-AC79-4D45-B2A3-220723E4C9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04DC0B06-AC79-4D45-B2A3-220723E4C9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F2292D-0491-4B72-8DEC-5A7D04A8BEAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F2292D-0491-4B72-8DEC-5A7D04A8BEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F2292D-0491-4B72-8DEC-5A7D04A8BEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F2292D-0491-4B72-8DEC-5A7D04A8BEAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
