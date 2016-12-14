@@ -12,15 +12,14 @@ namespace Gateway.ServiceGateways
 {
     public class AccountServiceGateway
     {
-        private HttpClient client;
-        public AccountServiceGateway(HttpClient client)
-        {
-            this.client = client;
+        private HttpClient client = new HttpClient();
+        public AccountServiceGateway()
+        {            
             client.BaseAddress = new Uri("http://localhost:6681/");
-
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json")
+            );
         }
 
         public HttpResponseMessage Register(RegisterModel model)
@@ -47,15 +46,7 @@ namespace Gateway.ServiceGateways
                 HttpContext.Current.Session["token"] = token;
             }
             return response;
-        }
-        private void AddAuthorizationHeader()
-        {
-            if (HttpContext.Current.Session["token"] != null)
-            {
-                string token = HttpContext.Current.Session["token"].ToString();
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            }
-        }
+        }        
 
     }
 }
