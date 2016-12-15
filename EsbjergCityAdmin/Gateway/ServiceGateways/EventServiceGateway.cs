@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Gateway.Models;
+using System.Web;
 
 namespace Gateway.ServiceGateways
 {
@@ -16,6 +17,14 @@ namespace Gateway.ServiceGateways
             client.BaseAddress = new Uri("http://localhost:6681/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if (HttpContext.Current.Session["token"] != null)
+            {
+                string token = HttpContext.Current.Session["token"].ToString();
+                if (client.DefaultRequestHeaders.Authorization == null)
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                }
+            }
         }
 
         public Event Create(Event t)

@@ -10,20 +10,25 @@ namespace EsbjergCityAdmin.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IServiceGateway<Order> _eg = new Facade().GetOrderGateway();
+        private readonly IServiceGateway<Order> _og = new Facade().GetOrderGateway();
 
         public ActionResult Index()
         {
-            return View(_eg.GetAll());
+            return View(_og.GetAll());
         }
 
         public ActionResult AcceptOrder(int id)
         {
-            var orderToComplete = _eg.Get(id);
+            var orderToComplete = _og.Get(id);
             orderToComplete.IsCompleted = true;
-            _eg.Update(orderToComplete);
+            _og.Update(orderToComplete);
             return RedirectToAction("Index");
         }
 
+        public ActionResult OrderDetails(int id)
+        {
+            var orderToComplete = _og.Get(id);
+            return View(orderToComplete);
+        }
     }
 }
