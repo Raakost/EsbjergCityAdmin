@@ -35,3 +35,8 @@ textarea {
 .table_head {
     background-color: grey;
 }
+
+.description_textbox {
+    min-width: 500px;
+    min-height: 300px;
+}

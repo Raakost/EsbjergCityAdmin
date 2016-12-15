@@ -11,7 +11,7 @@ namespace EsbjergCityAdmin.Controllers
     public class EventsController : Controller
     {
         private readonly IServiceGateway<Event> _eg = new Facade().GetEventGateway();
-        
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -33,7 +33,7 @@ namespace EsbjergCityAdmin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(_eg.Get(id));
         }
 
         public ActionResult Delete()
