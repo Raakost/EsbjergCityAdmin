@@ -4,14 +4,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Opret nyt Event</h2>
 
 @using (Html.BeginForm("CreateEvent", "Events", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Event</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -47,12 +46,9 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Tilbage til oversigt", "Index", null, new { @class = "btn btn-default" })
                 <input type="submit" value="Opret" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Tilbage til oversigt", "Index")
-</div>

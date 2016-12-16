@@ -12,11 +12,14 @@ namespace EsbjergCityAdmin.Controllers
     {
         private readonly IServiceGateway<Order> _og = new Facade().GetOrderGateway();
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View(_og.GetAll());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AcceptOrder(int id)
         {
             var orderToComplete = _og.Get(id);
@@ -25,6 +28,7 @@ namespace EsbjergCityAdmin.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult OrderDetails(int id)
         {
             var orderToComplete = _og.Get(id);
@@ -37,6 +41,8 @@ namespace EsbjergCityAdmin.Controllers
             return View(_og.Get(id));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(Order o)
         {
             _og.Delete(o);

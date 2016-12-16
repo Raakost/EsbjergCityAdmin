@@ -39,6 +39,7 @@ namespace EsbjergCityAdmin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateEvent(Event e)
         {
             _eg.Create(e);
@@ -52,6 +53,7 @@ namespace EsbjergCityAdmin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Event e)
         {
             _eg.Update(e);
@@ -64,7 +66,8 @@ namespace EsbjergCityAdmin.Controllers
             return View(_eg.Get(id));
         }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(Event e)
         {
             _eg.Delete(e);

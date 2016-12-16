@@ -24,8 +24,7 @@ namespace EsbjergCityAdmin.Controllers
         {
         }
 
-        //
-        // GET: /Account/Login
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -33,8 +32,6 @@ namespace EsbjergCityAdmin.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
@@ -58,8 +55,8 @@ namespace EsbjergCityAdmin.Controllers
             return View(model);
         }
 
-        [AllowAnonymous]
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult LogOff()
         {
             Session["token"] = null;
