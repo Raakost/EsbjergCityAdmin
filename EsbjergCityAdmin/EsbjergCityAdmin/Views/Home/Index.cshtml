@@ -5,11 +5,9 @@
 <table class="table not_completed_orders_table" style="table-layout: fixed">
     <thead class="table_head">
         <tr>
+            <th>Ordre Id</th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfPurchase)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsCompleted)
             </th>
             <th></th>
         </tr>
@@ -19,14 +17,13 @@
         @foreach (var item in Model.Where(x => x.IsCompleted == false))
         {
             <tr>
+                <td>@item.Id</td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateOfPurchase)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsCompleted)
-                </td>
-                <td>
-                    @Html.ActionLink("Detaljer", "OrderDetails", new { id = item.Id })
+                    @Html.ActionLink("Detaljer | ", "OrderDetails", new { id = item.Id })
+                    @Html.ActionLink("Cancel", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }
@@ -37,11 +34,9 @@
 <table class="table completed_orders_table" style="table-layout: fixed">
     <thead class="table_head">
         <tr>
+            <th>Ordre Id</th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfPurchase)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsCompleted)
             </th>
             <th></th>
         </tr>
@@ -51,13 +46,13 @@
         @foreach (var item in Model.Where(x => x.IsCompleted == true))
         {
             <tr>
+                <td>@item.Id</td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateOfPurchase)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsCompleted)
+                    @Html.ActionLink("Detaljer", "OrderDetails", new { id = item.Id })
                 </td>
-                <td></td>
             </tr>
         }
     </tbody>

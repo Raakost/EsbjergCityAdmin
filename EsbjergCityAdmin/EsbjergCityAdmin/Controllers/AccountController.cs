@@ -42,7 +42,7 @@ namespace EsbjergCityAdmin.Controllers
             if (ModelState.IsValid)
             {
                 HttpResponseMessage response = gateway.Login(model.Email, model.Password);
-                if(response.StatusCode == HttpStatusCode.OK)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
                     if (Url.IsLocalUrl(returnUrl))
                     {
@@ -58,38 +58,13 @@ namespace EsbjergCityAdmin.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/Register
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Register(RegisterModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        HttpResponseMessage response = gateway.Register(model);
-
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            gateway.Login(model.Email, model.Password);
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        else
-        //            ModelState.AddModelError("", response.Content.ReadAsStringAsync().Result);
-        //    }
-
-        //    return View(model);
-        //}
-
-        //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        [HttpGet]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
-        }       
+            Session["token"] = null;
+            return RedirectToAction("Login", "Account");
+        }
 
         #region Helpers
         // Used for XSRF protection when adding external logins

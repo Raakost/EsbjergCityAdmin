@@ -12,8 +12,8 @@ namespace Gateway.Models
         [Display(Name = "Købstidspunkt")]
         public DateTime DateOfPurchase { get; set; }
         public List<GiftCard> GiftCards { get; set; }
-
         [Display(Name = "Accepteret")]
         public bool IsCompleted { get; set; }
+        public Customer Customer { get; set; }
     }
 }

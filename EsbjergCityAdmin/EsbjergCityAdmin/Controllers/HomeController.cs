@@ -30,5 +30,17 @@ namespace EsbjergCityAdmin.Controllers
             var orderToComplete = _og.Get(id);
             return View(orderToComplete);
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            return View(_og.Get(id));
+        }
+
+        public ActionResult Delete(Order o)
+        {
+            _og.Delete(o);
+            return RedirectToAction("Index");
+        }
     }
 }

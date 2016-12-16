@@ -19,7 +19,7 @@ namespace EsbjergCityAdmin.Controllers
             var events = _eg.GetAll();
             var itemsPrPage = 8;
 
-            events = events.Where(x => x.DateOfEvent > DateTime.Now).OrderBy(x => x.DateOfEvent).ToList();
+            events = events.OrderByDescending(x => x.DateOfEvent).ToList();
 
             var pagination = new PaginatedViewModel
             {
@@ -45,14 +45,30 @@ namespace EsbjergCityAdmin.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             return View(_eg.Get(id));
         }
 
-        public ActionResult Delete()
+        [HttpPost]
+        public ActionResult Edit(Event e)
         {
-            return View();
+            _eg.Update(e);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            return View(_eg.Get(id));
+        }
+
+
+        public ActionResult Delete(Event e)
+        {
+            _eg.Delete(e);
+            return RedirectToAction("Index");
         }
 
 

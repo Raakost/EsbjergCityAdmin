@@ -36,9 +36,10 @@ textarea {
     background-color: grey;
 }
 
-.description_textbox {
-    min-width: 500px;
-    min-height: 300px;
+.text_area {
+    max-width: 500px;
+    max-width: 500px;
+    height: 300px;
 }
 
 .truncate {
