@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -13,7 +14,7 @@ namespace Gateway.ServiceGateways
     {
         private void ServiceGateway(HttpClient client)
         {
-            client.BaseAddress = new Uri("http://localhost:6681/");
+            client.BaseAddress = new Uri(ConfigurationManager.AppSettings["API_Address"]);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
